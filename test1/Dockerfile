@@ -4,13 +4,13 @@ ENV CUDNN_VERSION 7.6.4.38
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 #RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
 RUN  apt-get clean
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update --fix-missing && apt-get install -y curl wget net-tools bzip2 gcc
+RUN apt-get install -y --no-install-recommends \
     libcudnn7=$CUDNN_VERSION-1+cuda9.0 \
 && \
     apt-mark hold libcudnn7 && \
     rm -rf /var/lib/apt/lists/*
-RUN apt-get update --fix-missing && apt-get install -y curl wget net-tools bzip2 gcc\ 
+
     
 RUN wget --quiet https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/Miniconda3.sh && \
     /bin/bash ~/Miniconda3.sh -b -p /root/miniconda && \
