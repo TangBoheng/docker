@@ -1,7 +1,7 @@
 FROM nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04
 MAINTAINER tbh "tangboheng@chinamobile.com"
 
-RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+#RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
 RUN  apt-get clean
 RUN apt-get update --fix-missing && apt-get install -y curl wget vim net-tools bzip2 gcc git\
   && rm -rf /var/lib/apt/lists/* && mkdir -p /software
@@ -16,15 +16,15 @@ RUN wget --quiet https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Minicon
     # echo "conda activate base" >> ~/.bashrc
 
 RUN mv /miniconda /root/conda
-RUN /root/conda/bin/conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-RUN /root/conda/bin/conda --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 
-RUN /root/conda/bin/conda --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
-RUN /root/conda/bin/conda --set show_channel_urls yes
+#RUN /root/conda/bin/conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+#RUN /root/conda/bin/conda --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 
+#RUN /root/conda/bin/conda --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+#RUN /root/conda/bin/conda --set show_channel_urls yes
 
 ADD requirement.txt /requirement.txt
 
-RUN /root/conda/bin/pip install cython -i http://mirrors.aliyun.com/pypi/simple/ 
-RUN /root/conda/bin/pip install numpy -i http://mirrors.aliyun.com/pypi/simple/ 
-RUN /root/conda/bin/pip install -r requirement.txt -i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/conda/bin/pip install cython #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/conda/bin/pip install numpy #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/conda/bin/pip install -r requirement.txt #-i http://mirrors.aliyun.com/pypi/simple/ 
 
 CMD [ "/bin/bash" ]
