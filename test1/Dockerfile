@@ -27,8 +27,8 @@ RUN wget --quiet https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Minicon
 #RUN /root/conda/bin/conda --set show_channel_urls yes
 
 ADD requirement.txt /root/requirement.txt
-RUN /root/miniconda/bin/pip install cython #-i http://mirrors.aliyun.com/pypi/simple/ 
-RUN /root/miniconda/bin/pip install numpy #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/miniconda/bin/pip install cython==0.29.13 #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/miniconda/bin/pip install numpy==1.17.2 #-i http://mirrors.aliyun.com/pypi/simple/ 
 RUN /root/miniconda/bin/pip install -r /root/requirement.txt #-i http://mirrors.aliyun.com/pypi/simple/ 
 
 CMD [ "/bin/bash" ]
