@@ -15,7 +15,7 @@ RUN wget --quiet https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Minicon
     # && \
     # echo "conda activate base" >> ~/.bashrc
 
-RUN mv /root/miniconda3 /root/conda
+#RUN mv /root/miniconda3 /root/conda
 #RUN /root/conda/bin/conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 #RUN /root/conda/bin/conda --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 
 #RUN /root/conda/bin/conda --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
@@ -23,8 +23,8 @@ RUN mv /root/miniconda3 /root/conda
 
 ADD requirement.txt /root/requirement.txt
 
-RUN /root/conda/bin/pip install cython #-i http://mirrors.aliyun.com/pypi/simple/ 
-RUN /root/conda/bin/pip install numpy #-i http://mirrors.aliyun.com/pypi/simple/ 
-RUN /root/conda/bin/pip install -r /root/requirement.txt #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/miniconda3/bin/pip install cython #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/miniconda3/bin/pip install numpy #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/miniconda3/bin/pip install -r /root/requirement.txt #-i http://mirrors.aliyun.com/pypi/simple/ 
 
 CMD [ "/bin/bash" ]
