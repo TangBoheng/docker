@@ -15,7 +15,7 @@ RUN wget --quiet https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Minicon
     # && \
     # echo "conda activate base" >> ~/.bashrc
 
-RUN mv /miniconda /root/conda
+RUN mv /miniconda3 /root/conda
 #RUN /root/conda/bin/conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 #RUN /root/conda/bin/conda --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 
 #RUN /root/conda/bin/conda --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
