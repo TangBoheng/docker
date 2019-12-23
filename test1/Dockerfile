@@ -11,7 +11,7 @@ RUN wget --quiet https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Minicon
     /bin/bash ~/Miniconda3.sh -b -p /root/miniconda && \
     rm ~/Miniconda3.sh && \
     # ln -s /root/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo "export PATH=/root/conda/bin:$PATH" >> ~/.bashrc 
+    echo "export PATH=/root/miniconda/bin:$PATH" >> ~/.bashrc 
     # && \
     # echo "conda activate base" >> ~/.bashrc
 
@@ -22,9 +22,8 @@ RUN wget --quiet https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Minicon
 #RUN /root/conda/bin/conda --set show_channel_urls yes
 
 ADD requirement.txt /root/requirement.txt
-RUN ls root/
-RUN /root/miniconda3/bin/pip install cython #-i http://mirrors.aliyun.com/pypi/simple/ 
-RUN /root/miniconda3/bin/pip install numpy #-i http://mirrors.aliyun.com/pypi/simple/ 
-RUN /root/miniconda3/bin/pip install -r /root/requirement.txt #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/miniconda/bin/pip install cython #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/miniconda/bin/pip install numpy #-i http://mirrors.aliyun.com/pypi/simple/ 
+RUN /root/miniconda/bin/pip install -r /root/requirement.txt #-i http://mirrors.aliyun.com/pypi/simple/ 
 
 CMD [ "/bin/bash" ]
