@@ -10,7 +10,7 @@ WORKDIR /software
 
 RUN wget --quiet https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/Miniconda3-latest-Linux-x86_64.sh.sh && \
     /bin/bash ~/Miniconda3-latest-Linux-x86_64.sh -b -p /software/conda && \
-    rm ~/Miniconda3-latest-Linux-x86_64.sh && \
+    # rm ~/Miniconda3-latest-Linux-x86_64.sh && \
     # ln -s /software/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo "export PATH=/software/conda/bin:$PATH" >> ~/.bashrc 
     # && \
