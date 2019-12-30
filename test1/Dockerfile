@@ -4,7 +4,7 @@ ENV CUDNN_VERSION 7.6.4.38
 LABEL com.nvidia.cudnn.version="${CUDNN_VERSION}"
 #RUN  sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
 RUN  apt-get clean
-RUN apt-get update --fix-missing && apt-get install -y curl wget net-tools bzip2 gcc build-essential cmake
+RUN apt-get update --fix-missing && apt-get install -y curl wget net-tools bzip2 gcc build-essential vim cmake
 RUN apt-get install -y --no-install-recommends \
     libcudnn7=$CUDNN_VERSION-1+cuda9.0 \
 && \
