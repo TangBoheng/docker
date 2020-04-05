@@ -9,7 +9,7 @@ RUN wget https://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.4.1/kafka_2.12-2.4.
     && tar -zxvf kafka_2.12-2.4.1.tgz -C /root/mq\
     && rm kafka_2.12-2.4.1.tgz \
     && rm /root/mq/kafka_2.12-2.4.1/config/server.properties
-ADD ./conf/zoo.cfg /root/mq/apache-zookeeper-3.6.0-bin/conf/ \
+COPY ./conf/zoo.cfg /root/mq/apache-zookeeper-3.6.0-bin/conf/ \
     && ./conf/server.properties /root/mq/kafka_2.12-2.4.1/config/
 RUN /root/mq/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start \
     && /root/mq/kafka_2.12-2.4.1/bin/kafka-server-start.sh config/server.properties \
