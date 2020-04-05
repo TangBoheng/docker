@@ -7,9 +7,10 @@ RUN wget https://downloads.apache.org/zookeeper/zookeeper-3.6.0/apache-zookeeper
     && rm apache-zookeeper-3.6.0-bin.tar.gz
 RUN wget https://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.4.1/kafka_2.12-2.4.1.tgz  \
     && tar -zxvf kafka_2.12-2.4.1.tgz -C /root/mq\
-    && rm kafka_2.12-2.4.1.tgz
-ADD zoo.cfg /root/mq/apache-zookeeper-3.6.0-bin/conf/zoo.cfg \
-    && server.properties /root/mq/kafka_2.12-2.4.1/config/server.properties
+    && rm kafka_2.12-2.4.1.tgz \
+    rm /root/mq/kafka_2.12-2.4.1/config/server.properties
+ADD zoo.cfg /root/mq/apache-zookeeper-3.6.0-bin/conf/ \
+    && server.properties /root/mq/kafka_2.12-2.4.1/config/
 RUN /root/mq/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start \
     && /root/mq/kafka_2.12-2.4.1/bin/kafka-server-start.sh config/server.properties \
     && /root/mq/kafka_2.12-2.4.1/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
