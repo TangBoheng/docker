@@ -1,7 +1,7 @@
 FROM nvcr.io/nvidia/deepstream:4.0.2-19.12-devel
 LABEL maintainer="Tangboheng"
-ADD zoo.cfg /root/zoo.cfg \
-    && server.properties /root/server.properties
+ADD ./zoo.cfg /root/zoo.cfg 
+ADD ./server.properties /root/server.properties
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk && apt-get install -y wget \
     && mkdir -p /root/mq/data && mkdir -p /root/mq/log-1 \
