@@ -4,6 +4,7 @@ ADD ./zoo.cfg /root/zoo.cfg
 ADD ./server.properties /root/server.properties
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk && apt-get install -y wget \
+    && apt-get install libglib2.0 libglib2.0-dev libjansson4  libjansson-dev librdkafka1=0.11.3-1build1
     && mkdir -p /root/mq/data && mkdir -p /root/mq/log-1 \
     && wget https://downloads.apache.org/zookeeper/zookeeper-3.6.0/apache-zookeeper-3.6.0-bin.tar.gz \
     && tar -zxvf apache-zookeeper-3.6.0-bin.tar.gz -C /root/mq\
