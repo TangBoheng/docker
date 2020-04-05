@@ -17,5 +17,5 @@ RUN mv /root/zoo.cfg /root/mq/apache-zookeeper-3.6.0-bin/conf/
 RUN mv /root/server.properties /root/mq/kafka_2.12-2.4.1/config/
 
 RUN /root/mq/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start 
-RUN /root/mq/kafka_2.12-2.4.1/bin/kafka-server-start.sh config/server.properties \
+RUN /root/mq/kafka_2.12-2.4.1/bin/kafka-server-start.sh config/server.properties 
 RUN /root/mq/kafka_2.12-2.4.1/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
