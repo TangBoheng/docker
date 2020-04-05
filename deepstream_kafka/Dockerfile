@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y openjdk-8-jdk && apt-get install -y wge
     && rm kafka_2.12-2.4.1.tgz \
     && rm /root/mq/kafka_2.12-2.4.1/config/server.properties
 
-RUN mv /root/zoo.cfg /root/mq/apache-zookeeper-3.6.0-bin/conf/ \
-    mv /root/server.properties /root/mq/kafka_2.12-2.4.1/config/
+RUN cp /root/zoo.cfg /root/mq/apache-zookeeper-3.6.0-bin/conf/ \
+    cp /root/server.properties /root/mq/kafka_2.12-2.4.1/config/
 
 RUN /root/mq/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start \
     && /root/mq/kafka_2.12-2.4.1/bin/kafka-server-start.sh config/server.properties \
