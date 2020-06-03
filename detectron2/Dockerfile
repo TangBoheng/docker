@@ -3,10 +3,10 @@ FROM nvidia/cuda:10.1-cudnn7-devel
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
 	python3-opencv ca-certificates python3-dev git wget sudo  \
+	openssh-server vim \
 	cmake ninja-build protobuf-compiler libprotobuf-dev && \
   rm -rf /var/lib/apt/lists/*
 RUN ln -sv /usr/bin/python3 /usr/bin/python
-RUN apt-get install -y openssh-server vim 
 
 # create a non-root user
 ARG USER_ID=1000
@@ -41,7 +41,7 @@ RUN pip install --user -e detectron2_repo
 # Set a fixed model cache directory.
 ENV FVCORE_CACHE="/tmp"
 WORKDIR /home/appuser/detectron2_repo
-CMD [ "bash" ]
+CMD [ "/bin/bash" ]
 # run detectron2 under user "appuser":
 # wget http://images.cocodataset.org/val2017/000000439715.jpg -O input.jpg
 # python3 demo/demo.py  \
