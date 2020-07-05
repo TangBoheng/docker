@@ -4,7 +4,7 @@ ADD ./zoo.cfg /root/zoo.cfg
 ADD ./server.properties /root/server.properties
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk && apt-get install -y wget \
-    && apt-get install libjansson4  libjansson-dev librdkafka1=0.11.3-1build1 \
+    && apt-get install -y libjansson4  libjansson-dev librdkafka1=0.11.3-1build1 \
     && mkdir -p /root/mq/data && mkdir -p /root/mq/log-1 \
     && wget https://downloads.apache.org/zookeeper/zookeeper-3.6.0/apache-zookeeper-3.6.0-bin.tar.gz \
     && tar -zxvf apache-zookeeper-3.6.0-bin.tar.gz -C /root/mq\
@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y openjdk-8-jdk && apt-get install -y wge
     && wget https://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.4.1/kafka_2.12-2.4.1.tgz  \
     && tar -zxvf kafka_2.12-2.4.1.tgz -C /root/mq\
     && rm kafka_2.12-2.4.1.tgz \
-    && rm /root/mq/kafka_2.12-2.4.1/config/server.properties \
-    && service xrdp restart
+    && rm /root/mq/kafka_2.12-2.4.1/config/server.properties 
 
 RUN apt-get install -y xrdp vnc4server openssh-server g++ gdb gdbserver libglib2.0 libglib2.0-dev \
     && service xrdp restart
