@@ -20,7 +20,7 @@ RUN apt-get install -y xrdp vnc4server openssh-server g++ gdb gdbserver libglib2
 RUN mv /root/zoo.cfg /root/mq/apache-zookeeper-3.6.0-bin/conf/ 
 RUN mv /root/server.properties /root/mq/kafka_2.12-2.4.1/config/
 
-#RUN /root/mq/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start 
+#RUN /root/mq/apache-zookeeper-3.6.1-bin/bin/zkServer.sh start 
 #RUN /root/mq/kafka_2.12-2.4.1/bin/kafka-server-start.sh -daemon /root/mq/kafka_2.12-2.4.1/config/server.properties 
 #RUN cd /root/mq/kafka_2.12-2.4.1 && ./bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
 CMD [ "/bin/bash" ]
