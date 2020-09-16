@@ -10,3 +10,4 @@ RUN /root/miniconda3/bin/conda install -yc conda-forge scikit-image pycocotools 
 RUN /root/miniconda3/bin/conda install -yc spyder-ide spyder-line-profiler
 RUN /root/miniconda3/bin/conda install -yc pytorch pytorch torchvision
 RUN /root/miniconda3/bin/conda install -yc conda-forge protobuf numpy && pip install onnx
+RUN /root/miniconda3/bin/pip install flask pyinstaller
