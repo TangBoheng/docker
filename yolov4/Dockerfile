@@ -1,1 +1,1 @@
-From daisukekobayashi/darknet:gpu-cv-cc53
+From daisukekobayashi/darknet:gpu-cv-cc62
