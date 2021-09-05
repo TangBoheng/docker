@@ -98,4 +98,4 @@ RUN apt update \
     && cd ../../ \
     && rm -rf *gz open* dense*
 
-ENTRYPOINT ["/usr/bin/denseflow"]
+CMD ["/bin/bash"]
