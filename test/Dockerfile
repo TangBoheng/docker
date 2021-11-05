@@ -1,1 +1,1 @@
-FROM openvino/model_server
+FROM openvino/ubuntu18_dev
