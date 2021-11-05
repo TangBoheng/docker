@@ -1,1 +1,1 @@
-FROM openvino/model_server:latest
+FROM openvino/model_server
