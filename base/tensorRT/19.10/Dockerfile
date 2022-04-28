@@ -1,1 +1,1 @@
-From nvcr.io/nvidia/tensorrt:19.10-py3
+From nvcr.io/nvidia/tensorrt:21.08-py3
