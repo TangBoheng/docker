@@ -1,2 +1,8 @@
-From pytorch/pytorch:1.4-cuda10.1-cudnn7-devel
-RUN apt-get update && apt-get install -y tmux openssh-server 
+ARG PYTORCH="1.6.0"
+ARG CUDA="10.1"
+ARG CUDNN="7"
+
+FROM pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
+RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 libxrender-dev libxext6 ffmpeg \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
