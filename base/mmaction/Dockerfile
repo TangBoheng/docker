@@ -11,12 +11,16 @@ ENV FORCE_CUDA="1"
 RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 libxrender-dev libxext6 ffmpeg vim openssh-server gcc gdb gdbserver \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*\
-    && pip install openmim opencv-python==3.4.2.17 cython –no-cache-dir \
-    && mim install mmcv-full && mim install mmdet mmpose\
-    && git clone https://github.com/open-mmlab/mmaction2.git /mmaction2 \
+    && pip install openmim numpy opencv-python==3.4.2.17 cython einops -no-cache-dir \
+    && mim install mmcv-full==1.4.0 && mim install mmdet mmpose\
+    
+RUN git clone https://github.com/open-mmlab/mmaction2.git /mmaction2 \
     && mkdir -p /mmaction2/data \
     && conda clean --all \
-    && pip install --no-cache-dir -e /mmaction2 
+    && pip install --no-cache-dir -e /mmaction2 \
+    && rm -rf /mmaction2
+
+
 
 
 
