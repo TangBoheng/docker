@@ -8,15 +8,16 @@ ENV TORCH_CUDA_ARCH_LIST="6.0 6.1 7.0+PTX"
 ENV TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
 ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 ENV FORCE_CUDA="1"
+RUN echo 'deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /' > /etc/apt/sources.list.d/cuda.list
 RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 libxrender-dev libxext6 ffmpeg vim openssh-server \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* 
+    && rm -rf /var/lib/apt/lists/* \
 
-RUN pip install openmim numpy opencv-python==3.4.2.17 cython einops -no-cache-dir 
+    && pip install openmim numpy opencv-python==3.4.2.17 cython einops -no-cache-dir \
 
-RUN mim install mmcv-full==1.4.0 && mim install mmdet mmpose
+    && mim install mmcv-full==1.4.0 && mim install mmdet mmpose \
     
-RUN git clone https://github.com/open-mmlab/mmaction2.git /mmaction2 \
+    && git clone https://github.com/open-mmlab/mmaction2.git /mmaction2 \
     && mkdir -p /mmaction2/data \
     && conda clean --all \
     && pip install --no-cache-dir -e /mmaction2 \
