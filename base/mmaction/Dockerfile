@@ -10,8 +10,8 @@ ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 ENV FORCE_CUDA="1"
 RUN rm /etc/apt/sources.list.d/cuda.list
 RUN rm /etc/apt/sources.list.d/nvidia-ml.list
-RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 libxrender-dev libxext6 ffmpeg vim openssh-server \
-    && apt-get clean \
+RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 libxrender-dev libxext6 ffmpeg vim openssh-server 
+RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
 
     && pip install openmim numpy opencv-python==3.4.2.17 cython einops -no-cache-dir \
