@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 lib
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
 
-    && pip install openmim numpy opencv-python==3.4.2.17 cython einops --no-cache-dir \
+    && pip install openmim numpy opencv-python==3.4.8.29 cython einops --no-cache-dir \
 
     && mim install mmcv-full==1.4.0 && mim install mmdet mmpose \
     
