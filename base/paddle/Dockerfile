@@ -1,1 +1,1 @@
-From paddlepaddle/paddle:2.1.0-gpu-cuda10.2-cudnn7
+From openvino/ubuntu20_runtime
