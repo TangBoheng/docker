@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TORCH_CUDA_ARCH_LIST="6.0 6.1 7.0+PTX"
 ENV TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
 ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
-ENV FORCE_CUDA="1"
+ENV FORCE_CUDA="0"
 ENV RUNLEVEL=1
 RUN rm /etc/apt/sources.list.d/cuda.list
 RUN rm /etc/apt/sources.list.d/nvidia-ml.list
