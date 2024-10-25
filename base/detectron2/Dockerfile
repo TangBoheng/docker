@@ -1,1 +1,1 @@
-FROM milvusdb/milvus:v2.2.0
+FROM milvusdb/milvus:v2.4.13-hotfix
