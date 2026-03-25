@@ -1,1 +1,1 @@
-FROM redis:redis-stack:7.2.0-v9
+FROM redis:redis-stack:7.2.0-v20
