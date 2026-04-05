@@ -1,1 +1,1 @@
-FROM bitnami/milvus:latest
+FROM milvusdb/milvus:latest
