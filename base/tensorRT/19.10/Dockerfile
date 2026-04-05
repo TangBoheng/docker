@@ -1,1 +1,1 @@
-From nvcr.io/nvidia/tensorrt:21.08-py3
+FROM bitnamicharts/milvus@sha256:2cde39903fade453e609fd564af468b79bfd7802ea873f59de2bab1293cf6f61
