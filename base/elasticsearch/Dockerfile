@@ -1,12 +1,12 @@
 FROM elasticsearch:9.3.2
 
-# 安装 IK 分词插件
+# 安装 IK 分词插件（通过 ghproxy 镜像代理 GitHub）
 RUN elasticsearch-plugin install --batch \
-    https://github.com/infinilabs/analysis-ik/releases/download/v9.3.2/elasticsearch-analysis-ik-9.3.2.zip
+    https://ghproxy.com/https://github.com/infinilabs/analysis-ik/releases/download/v9.3.2/elasticsearch-analysis-ik-9.3.2.zip
 
-# 安装拼音分词插件
+# 安装拼音分词插件（通过 ghproxy 镜像代理 GitHub）
 RUN elasticsearch-plugin install --batch \
-    https://github.com/medcl/elasticsearch-analysis-pinyin/releases/download/v9.3.2/elasticsearch-analysis-pinyin-9.3.2.zip
+    https://ghproxy.com/https://github.com/medcl/elasticsearch-analysis-pinyin/releases/download/v9.3.2/elasticsearch-analysis-pinyin-9.3.2.zip
 
 # 修复 IK 插件 entitlement 策略（ES 9.x 需要显式声明 files read 权限）
 RUN printf 'ALL-UNNAMED:\n  - files:\n    - path: /usr/share/elasticsearch/config/analysis-ik\n      mode: read\n    - path: /usr/share/elasticsearch/plugins/analysis-ik\n      mode: read\n  - outbound_network\n' \
