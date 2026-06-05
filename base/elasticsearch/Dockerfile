@@ -1,12 +1,12 @@
 FROM elasticsearch:9.3.2
 
-# 安装 IK 分词插件（通过 ghproxy 镜像代理 GitHub）
-RUN elasticsearch-plugin install --batch \
-    https://ghproxy.com/https://github.com/infinilabs/analysis-ik/releases/download/v9.3.2/elasticsearch-analysis-ik-9.3.2.zip
+# 安装 IK 分词插件
+COPY elasticsearch-analysis-ik-9.3.2.zip /tmp/
+RUN elasticsearch-plugin install --batch file:///tmp/elasticsearch-analysis-ik-9.3.2.zip
 
-# 安装拼音分词插件（通过 ghproxy 镜像代理 GitHub）
-RUN elasticsearch-plugin install --batch \
-    https://ghproxy.com/https://github.com/medcl/elasticsearch-analysis-pinyin/releases/download/v9.3.2/elasticsearch-analysis-pinyin-9.3.2.zip
+# 安装拼音分词插件
+COPY elasticsearch-analysis-pinyin-9.3.2.zip /tmp/
+RUN elasticsearch-plugin install --batch file:///tmp/elasticsearch-analysis-pinyin-9.3.2.zip
 
 # 修复 IK 插件 entitlement 策略（ES 9.x 需要显式声明 files read 权限）
 RUN printf 'ALL-UNNAMED:\n  - files:\n    - path: /usr/share/elasticsearch/config/analysis-ik\n      mode: read\n    - path: /usr/share/elasticsearch/plugins/analysis-ik\n      mode: read\n  - outbound_network\n' \
@@ -22,3 +22,6 @@ RUN printf '历史古迹\n自然风光\n主题乐园\n城市景观\n经典必去
 # 写入 IK 配置文件，引用自定义词典
 RUN printf '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">\n<properties>\n    <comment>IK Analyzer extended configuration</comment>\n    <entry key="ext_dict">traveling_tag.dic</entry>\n</properties>\n' \
     > /usr/share/elasticsearch/config/analysis-ik/IKAnalyzer.cfg.xml
+
+# 清理临时文件
+RUN rm -f /tmp/elasticsearch-analysis-ik-9.3.2.zip /tmp/elasticsearch-analysis-pinyin-9.3.2.zip
