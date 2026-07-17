@@ -1,5 +1,5 @@
-FROM minio/minio:RELEASE.2024-07-25T18-09-29Z
+FROM minio/minio:RELEASE.2024-09-22T00-33-43Z
 
 # Minio 对象存储镜像（多模态 RAG Demo 用）
-# 版本 RELEASE.2024-07-25T18-09-29Z 是 Milvus 2.6 官方 docker-compose 验证过的配套版本
-# 构建产物用于推送阿里云容器镜像服务，供本地 docker pull（Docker Hub 直连不可达时的替代源）
+# 版本 RELEASE.2024-09-22T00-33-43Z 是 Docker Hub 上确认存在的稳定版（2024年9月）
+# 用于阿里云镜像构建，供本地 docker pull（Docker Hub 直连不可达时的替代源）
